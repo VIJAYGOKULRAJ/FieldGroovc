@@ -30,7 +30,7 @@ namespace CRUD_Operation.Controllers
                 _emailSender.SendEmail(model.Email, Subject, plainTextBody, htmlBody);
                 _userRepository.UserAdd(model);
 
-                return Ok("Successfully Login....!");
+                return Ok("Successfully Registered....!");
             }
             return BadRequest();
 
