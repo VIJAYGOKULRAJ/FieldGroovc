@@ -23,5 +23,4 @@ namespace CRUD.Domain.Models
         public DateTime UpdatedDate { get; set; } = DateTime.Now;
         public string? UpdatedBy  { get; set; }
     }
-
 }
