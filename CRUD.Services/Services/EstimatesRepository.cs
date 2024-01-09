@@ -126,13 +126,11 @@ namespace CRUD.Services.Services
                 previousDetails.Token = model.Token;
 
                 Save();
-
                 return "Estimate Updated";
             }
 
             else
             {
-
                 return "Estimate Blocked";
             }
         }
@@ -152,7 +150,7 @@ namespace CRUD.Services.Services
                 return "Default Estimate not changed because of locked";
             }
         }
-
+        
        
     }
 }
