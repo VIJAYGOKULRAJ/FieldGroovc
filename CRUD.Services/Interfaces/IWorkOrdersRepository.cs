@@ -10,6 +10,6 @@ namespace CRUD.Services.Interfaces
     public interface IWorkOrdersRepository
     {
         public string WorkOrdersAdd(WorkOrders model);
-        public string EditWordOrders(int id);
+        string EditWordOrders(int id, WorkOrders updatedModel);
     }
 }
