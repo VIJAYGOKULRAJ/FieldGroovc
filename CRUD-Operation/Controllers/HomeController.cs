@@ -22,7 +22,7 @@ namespace CRUD_Operation.Controllers
             return View();
         }
     
-        
+        //Home Controller
 
         public IActionResult Privacy()
         {
