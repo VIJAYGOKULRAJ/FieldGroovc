@@ -30,7 +30,8 @@ namespace CRUD_Operation.Controllers
             return Ok(result);  
         }
 
-        //All Column Edit
       
     }
 }
+
+

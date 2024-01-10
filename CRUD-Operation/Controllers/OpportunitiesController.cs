@@ -52,5 +52,27 @@ namespace CRUD_Operation.Controllers
             }
             return BadRequest();
         }
+
+        [HttpPost("DuplicateOpportunity/{id}")]
+        public IActionResult DuplicateOpportunity(int id)
+        {
+            try
+            {
+                var duplicatedOpportunity = _Opportunities.DuplicateOpportunity(id);
+
+                if (duplicatedOpportunity != null)
+                {   
+                    return Ok(duplicatedOpportunity);
+                }
+                else
+                {
+                    return NotFound("Original opportunity not found");
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred while duplicating the opportunity: {ex.Message}");
+            }
+        }
     }
 }

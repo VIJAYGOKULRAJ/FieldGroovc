@@ -41,7 +41,7 @@ namespace CRUD.Services.Services
                 var existingVandor = _context.Vendors.FindAsync(id);
                 if(existingVandor != null)
                 {
-                    
+                    return "valid";
                 }
                 else
                 {

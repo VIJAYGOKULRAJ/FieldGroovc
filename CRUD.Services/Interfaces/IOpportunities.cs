@@ -12,5 +12,6 @@ namespace CRUD.Services.Interfaces
         Task ConvertToOpportunities(int id);
         Task<IEnumerable<Leads>> GetAll();
         Task OpportunitiesAdd(Leads model);
+        Leads DuplicateOpportunity(int id);
     }
 }

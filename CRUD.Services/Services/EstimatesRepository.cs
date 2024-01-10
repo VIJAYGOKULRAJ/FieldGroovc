@@ -150,7 +150,76 @@ namespace CRUD.Services.Services
                 return "Default Estimate not changed because of locked";
             }
         }
-        
-       
+
+        public Estimates DuplicateEstimate(int id)
+        {
+            try
+            {
+                var existingEstimate = _context.Estimates.FirstOrDefault(x => x.EstimateId == id);
+
+                if (existingEstimate != null)
+                {
+
+                    var newEstimate = new Estimates
+                    {
+                        UserId = existingEstimate.UserId,
+                        LeadsId = existingEstimate.LeadsId,
+                        Name = existingEstimate.Name,
+                        LineItemIds = existingEstimate.LineItemIds,
+                        CustomerAccepted = existingEstimate.CustomerAccepted,
+                        Notes = existingEstimate.Notes,
+                        LocationId = existingEstimate.LocationId,
+                        Type = existingEstimate.Type,
+                        Number = existingEstimate.Number,
+                        Status = existingEstimate.Status,
+                        Fineprint = existingEstimate.Fineprint,
+                        StartDate = existingEstimate.StartDate,
+                        ChangeOrder = existingEstimate.ChangeOrder,
+                        ReadyForWorkOrder = existingEstimate.ReadyForWorkOrder,
+                        Duration = existingEstimate.Duration,
+                        SignerName = existingEstimate.SignerName,
+                        SignerTitle = existingEstimate.SignerTitle,
+                        SignerSignature = existingEstimate.SignerSignature,
+                        SignatureStyle = existingEstimate.SignatureStyle,
+                        DateSigned = existingEstimate.DateSigned,
+                        Locked = existingEstimate.Locked,
+                        Dead = existingEstimate.Dead,
+                        CreatedBy = existingEstimate.CreatedBy,
+                        HidePhaseTotal = existingEstimate.HidePhaseTotal,
+                        DisplayDiscountAmountOnPrintable = existingEstimate.DisplayDiscountAmountOnPrintable,
+                        DateCustomerAccepted = existingEstimate.DateCustomerAccepted,
+                        HideEstimateTotal = existingEstimate.HideEstimateTotal,
+                        DepositAmount = existingEstimate.DepositAmount,
+                        DepositAmountUnit = existingEstimate.DepositAmountUnit,
+                        DepositNote = existingEstimate.DepositNote,
+                        Amount = existingEstimate.Amount,
+                        PaidDate = existingEstimate.PaidDate,
+                        PayaVaultId = existingEstimate.PayaVaultId,
+                        PaymentMethodPreview = existingEstimate.PaymentMethodPreview,
+                        PayaVaultLocationId = existingEstimate.PayaVaultLocationId,
+                        Token = existingEstimate.Token
+
+                    };
+
+                    newEstimate.DateCreated = DateTime.Now;
+                    newEstimate.DateModified = DateTime.Now;
+                    newEstimate.DefaultEstimate = false;
+                    _context.Estimates.Add(newEstimate);
+                    Save();
+
+                    return newEstimate;
+                }
+                else
+                {
+                    return null; 
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+
     }
 }
