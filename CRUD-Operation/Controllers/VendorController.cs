@@ -31,10 +31,6 @@ namespace CRUD_Operation.Controllers
         }
 
         //All Column Edit
-        [HttpPut]
-        public async Task<IActionResult> EditVendor(int id, )
-        {
-
-        }
+      
     }
 }
