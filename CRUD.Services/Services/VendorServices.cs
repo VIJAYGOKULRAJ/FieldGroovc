@@ -42,6 +42,7 @@ namespace CRUD.Services.Services
                 var existingVandor = _context.Vendors.Find(id);
                 if(existingVandor != null)
                 {
+
                     existingVandor.UserId = vendor.UserId;
                     existingVandor.CompanyName = vendor.CompanyName;
                     existingVandor.MailingAddress1 = vendor.MailingAddress1;
@@ -65,6 +66,7 @@ namespace CRUD.Services.Services
                     _context.Vendors.Update(existingVandor);
                     _context.SaveChanges();
                     return "edited";
+
                 }
                 else
                 {
