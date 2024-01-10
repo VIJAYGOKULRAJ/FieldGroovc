@@ -49,18 +49,47 @@ namespace CRUD.Services.Services
             }
         }
 
-        public string EditWordOrders(int id)
+        public string EditWordOrders(int id, WorkOrders updatedModel)
         {
-            var previousDetails = _context.WorkOrders.FirstOrDefault(x => x.WorkOrdersId == id);
-            if (previousDetails != null)
+            try
             {
-                
-                Save();
-                return "WordOrders Completed";
+                var existingWorkOrder = _context.WorkOrders.FirstOrDefault(x => x.WorkOrdersId == id);
+
+                if (existingWorkOrder != null)
+                {
+                    existingWorkOrder.Name = updatedModel.Name;
+                    existingWorkOrder.LineItemIds = updatedModel.LineItemIds;
+                    existingWorkOrder.Owner = updatedModel.Owner;
+                    existingWorkOrder.CompletedDate = updatedModel.CompletedDate;
+                    existingWorkOrder.Notes = updatedModel.Notes;
+                    existingWorkOrder.Scheduled = updatedModel.Scheduled;
+                    existingWorkOrder.LocationId = updatedModel.LocationId;
+                    existingWorkOrder.Type = updatedModel.Type;
+                    existingWorkOrder.Number = updatedModel.Number;
+                    existingWorkOrder.Status = updatedModel.Status;
+                    existingWorkOrder.StatusHistory = updatedModel.StatusHistory;
+                    existingWorkOrder.NotifySalesman = updatedModel.NotifySalesman;
+                    existingWorkOrder.NotifyAccounting = updatedModel.NotifyAccounting;
+                    existingWorkOrder.LaborAmount = updatedModel.LaborAmount;
+                    existingWorkOrder.PartialWorkOrder = updatedModel.PartialWorkOrder;
+                    existingWorkOrder.DisplayLaborAmount = updatedModel.DisplayLaborAmount;
+                    existingWorkOrder.DateModified = updatedModel.DateModified;
+                    existingWorkOrder.CreatedBy = updatedModel.CreatedBy;
+                    existingWorkOrder.LaborAmountType = updatedModel.LaborAmountType;
+                    existingWorkOrder.AllowInvoiceBeforeComplete = updatedModel.AllowInvoiceBeforeComplete;
+                    existingWorkOrder.TentativeDate = updatedModel.TentativeDate;
+                    existingWorkOrder.HourlyOnlyLaborCost = updatedModel.HourlyOnlyLaborCost;
+                    Save();
+                    return "WorkOrder updated successfully";
+                }
+                else
+                {
+                    return "WorkOrder not found";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return "WorkOrders not yet changed";
+                return ex.Message;
             }
         }
     }

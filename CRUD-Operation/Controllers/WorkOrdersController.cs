@@ -16,27 +16,27 @@ namespace CRUD_Operation.Controllers
 
         }
         //Create a new Workorder
-          [HttpPost]
-          public IActionResult CreateWorkOrders(WorkOrders model)
-          {
-              if (ModelState.IsValid)
-              {
-
-                var result = _workOrdersRepository.WorkOrdersAdd(model);
-
-                  return Ok(result);
-              }
-              return BadRequest();    
-          }
-
-
-        [HttpPut]
-        public IActionResult EditWordOrders(int id)
+        [HttpPost]
+        public IActionResult CreateWorkOrders(WorkOrders model)
         {
             if (ModelState.IsValid)
             {
 
-                var result = _workOrdersRepository.EditWordOrders(id);
+                var result = _workOrdersRepository.WorkOrdersAdd(model);
+
+                return Ok(result);
+            }
+            return BadRequest();
+        }
+
+
+        [HttpPut("{id}")]
+        public IActionResult EditWordOrders(int id, WorkOrders updatedModel)
+        {
+            if (ModelState.IsValid)
+            {
+
+                var result = _workOrdersRepository.EditWordOrders(id,updatedModel);
 
                 return Ok(result);
             }
