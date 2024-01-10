@@ -24,13 +24,28 @@ namespace CRUD_Operation.Controllers
 
         //Create Vendors
         [HttpPost]
-        public async Task<IActionResult> CreateVendor(Vendors newVendor)
+        public async Task<IActionResult> CreateVendor([FromBody] Vendors newVendor)
         {
             var result = _vendorServices.CreateVendor(newVendor);
-            return Ok(result);  
+            return Ok(result);
         }
 
         //All Column Edit
-      
+        [HttpPut("{id}")]
+        public async Task<IActionResult> EditVendor(int id, [FromBody] Vendors vendor)
+        {
+            var result = _vendorServices.EditVendor(id, vendor);
+            return Ok(result);
+
+        }
+
+        //Change vendor inactive
+        [HttpPut("{id}/Inactivate")]
+        public async Task<IActionResult> InactivateVendor(int id)
+        {
+            var result = _vendorServices.InActivateVendor(id);
+            return Ok(result);
+        }
+
     }
 }
