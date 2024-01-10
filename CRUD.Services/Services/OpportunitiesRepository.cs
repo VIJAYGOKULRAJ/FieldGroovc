@@ -69,5 +69,45 @@ namespace CRUD.Services.Services
             await _context.Leads.AddAsync(model);
             Save();
         }
+
+
+        public Leads DuplicateOpportunity(int id)
+        {
+            try
+            {
+                var existingOpportunity = _context.Leads.FirstOrDefault(x => x.LeadsId == id);
+
+                if (existingOpportunity != null)
+                {
+                    var newOpportunity = new Leads
+                    {
+                        UserId = existingOpportunity.UserId,
+                        AccountType = existingOpportunity.AccountType,
+                        Status = existingOpportunity.Status,
+                        ProjectName = existingOpportunity.ProjectName,
+                        CreatedBy = existingOpportunity.CreatedBy,
+                        UpdatedBy = existingOpportunity.UpdatedBy
+                    };
+
+                    newOpportunity.CreatedDate = DateTime.Now;
+                    newOpportunity.UpdatedDate = DateTime.Now;
+                    newOpportunity.IsOpportunity = true;
+
+                    _context.Leads.Add(newOpportunity);
+                    Save();
+
+                    return newOpportunity;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error duplicating opportunity: {ex.Message}");
+                return null;
+            }
+        }
     }
 }

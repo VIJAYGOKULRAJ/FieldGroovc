@@ -85,5 +85,28 @@ namespace CRUD_Operation.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+        [HttpPost("duplicateEstimate/{id}")]
+        public IActionResult DuplicateEstimate(int id)
+        {
+            try
+            {
+                var duplicatedEstimate = _estimatesRepository.DuplicateEstimate(id);
+
+                if (duplicatedEstimate != null)
+                {
+                    return Ok(duplicatedEstimate);
+                }
+                else
+                {
+                    return NotFound("Original estimate not found");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the exception or handle it as needed
+                return StatusCode(500, "An error occurred while duplicating the estimate.");
+            }
+        }
+
     }
 }

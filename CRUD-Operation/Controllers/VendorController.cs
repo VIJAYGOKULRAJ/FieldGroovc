@@ -30,6 +30,7 @@ namespace CRUD_Operation.Controllers
             return Ok(result);
         }
 
+
         //All Column Edit
         [HttpPut("{id}")]
         public async Task<IActionResult> EditVendor(int id, [FromBody] Vendors vendor)
@@ -47,5 +48,8 @@ namespace CRUD_Operation.Controllers
             return Ok(result);
         }
 
+
     }
 }
+
+
