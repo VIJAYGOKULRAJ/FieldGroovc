@@ -14,5 +14,7 @@ namespace CRUD.Services.Interfaces
         string CreateVendor(Vendors vendor);
 
         string EditVendor(int id, Vendors vendor);
+
+        string InActivateVendor(int id);
     }
 }
