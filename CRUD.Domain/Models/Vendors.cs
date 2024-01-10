@@ -15,7 +15,7 @@ namespace CRUD.Domain.Models
 
         [ForeignKey("Users")]
         public int UserId { get; set; }
-        public DateTime? DateCreated { get; set; }
+        public DateTime? DateCreated { get; set; } = DateTime.Now;
         public string CompanyName { get; set; }
         public string MailingAddress1 { get; set; }
         public string MailingAddress2 { get; set; }
@@ -27,7 +27,7 @@ namespace CRUD.Domain.Models
         public string Notes { get; set; }
         public string Phone { get; set; }
         public string IntegrationId { get; set; }
-        public DateTime? DateModified { get; set; }
+        public DateTime? DateModified { get; set; } = DateTime.Now;
         public string Email { get; set; }
         public string Website { get; set; }
         public string QuickbooksId { get; set; }
