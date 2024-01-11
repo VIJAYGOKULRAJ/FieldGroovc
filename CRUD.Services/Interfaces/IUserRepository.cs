@@ -9,6 +9,7 @@ namespace CRUD.Services.Interfaces
 {
     public interface IUserRepository
     {
+        Task<IEnumerable<Users>> GetUsers();
         Task UserAdd(Users model);
         Users GetUserByEmail(string email);
         Task UpdateUser(Users user);
