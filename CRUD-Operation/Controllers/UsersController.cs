@@ -4,6 +4,7 @@ using CRUD_Operation.Models;
 using Humanizer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CRUD_Operation.Controllers
 {
@@ -19,6 +20,13 @@ namespace CRUD_Operation.Controllers
             _userRepository = userRepository;
             _emailSender = emailSender;
         }
+
+        [HttpGet]
+        public async Task<IEnumerable<Users>> GetallUsers()
+        {
+            return await _userRepository.GetUsers();
+        }
+
         [HttpPost]
         public IActionResult CreateCustomer(Users model)
         {

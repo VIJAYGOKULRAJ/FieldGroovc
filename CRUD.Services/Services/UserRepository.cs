@@ -57,5 +57,9 @@ namespace CRUD.Services.Services
             return _context.Users.FirstOrDefault(x => x.UserId == id);
         }
 
+        public async Task<IEnumerable<Users>> GetUsers()
+        {
+            return await _context.Users.ToListAsync();
+        }
     }
 }
