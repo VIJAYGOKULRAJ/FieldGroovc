@@ -6,8 +6,11 @@ using CRUD.Services.Services;
 using CRUD.Services.Validator;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -52,6 +55,26 @@ builder.Services.AddScoped<IVendorServices, VendorServices>();
 builder.Services.AddScoped<IInventoryItemRepository, InventoryItemRepository>();
 
 builder.Services.AddScoped<IInvoiceRepository, InvoiceRepository>();
+
+builder.Services.AddControllers();
+var key = "thisismysecretkeycreatedbyvijay-45234-5435-234-5345-3245-23452345-345-23453245";
+
+builder.Services.AddAuthentication(x =>
+{
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(x =>
+{
+    x.RequireHttpsMetadata = false;
+    x.SaveToken = true;
+    x.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(key)),
+        ValidateIssuer = false,
+        ValidateAudience = false
+    };
+});
 
 var app = builder.Build();
 

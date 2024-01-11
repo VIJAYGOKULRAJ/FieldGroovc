@@ -1,13 +1,7 @@
 ﻿using CRUD.Data.MySQL.Data;
 using CRUD.Domain.Models;
 using FluentValidation;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace CRUD.Services.Validator
 {
@@ -53,8 +47,6 @@ namespace CRUD.Services.Validator
 
             RuleFor(user => user.UpdatedDate)
                 .NotEmpty().WithMessage("UpdatedDate is required");
-
-            // Add more validation rules as needed for other properties
         }
         private bool BeUniqueEmail(string email)
         {

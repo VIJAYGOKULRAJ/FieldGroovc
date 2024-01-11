@@ -3,12 +3,14 @@ using CRUD.Services.Interfaces;
 using CRUD.Services.Services;
 using CRUD_Operation.Models;
 using Humanizer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace CRUD_Operation.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class LeadsController : ControllerBase
