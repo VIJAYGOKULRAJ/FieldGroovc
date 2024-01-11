@@ -51,6 +51,8 @@ builder.Services.AddScoped<IVendorServices, VendorServices>();
 
 builder.Services.AddScoped<IInventoryItemRepository, InventoryItemRepository>();
 
+builder.Services.AddScoped<IInvoiceRepository, InvoiceRepository>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

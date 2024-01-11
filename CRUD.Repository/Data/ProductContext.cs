@@ -15,5 +15,6 @@ namespace CRUD.Data.MySQL.Data
         public DbSet<WorkOrders> WorkOrders { get; set; }
         public DbSet<Vendors> Vendors { get; set; }
         public DbSet<InventoryItems> InventoryItems { get; set; }
+        public DbSet<Invoices> Invoices { get; set; }
     }
 }
