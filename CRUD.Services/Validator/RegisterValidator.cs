@@ -38,7 +38,7 @@ namespace CRUD.Services.Validator
         private bool BeUniqueEmail(string email)
         {
             // Check if the email already exists in the database
-            return !context.Register.Any(u => u.Email == email);
+            return !context.Users.Any(u => u.Email == email);
         }
         private bool BeValidName(string name)
         {
