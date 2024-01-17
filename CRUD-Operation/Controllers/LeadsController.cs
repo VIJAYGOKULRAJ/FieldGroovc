@@ -21,7 +21,6 @@ namespace CRUD_Operation.Controllers
         {
             _leadsRepository = leadsRepository;
             _userRepository = userRepository;
-
         }
 
         

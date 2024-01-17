@@ -1,10 +1,12 @@
 ﻿using CRUD.Domain.Models;
 using CRUD.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CRUD_Operation.Controllers
 {
+    [Authorize(Roles = "admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class EstimatesController : ControllerBase
