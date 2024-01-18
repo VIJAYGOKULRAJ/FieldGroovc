@@ -9,6 +9,7 @@ namespace CRUD.Services.Interfaces
 {
     public interface ILeadsRepository
     {
+        
         void LeadsAdd(Leads model);
         Task<IEnumerable<Leads>> GetAll();
         Leads GetById(int id);
