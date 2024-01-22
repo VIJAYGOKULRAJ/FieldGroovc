@@ -43,7 +43,6 @@ builder.Services.AddScoped<IEmailSender, EmailSender>();
 
 builder.Services.AddScoped<ILeadsRepository, LeadsRepository>();
 
-
 builder.Services.AddScoped<IOpportunities, OpportunitiesRepository>();
 
 builder.Services.AddScoped<IEstimatesRepository, EstimatesRepository>();

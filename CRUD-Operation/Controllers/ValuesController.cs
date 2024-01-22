@@ -20,7 +20,7 @@ namespace CRUD_Operation.Controllers
         }
 
         [HttpPost("Authenticate")]
-        public IActionResult Authenticate( Login model)
+        public IActionResult Authenticate(Login model)
         {
             var details = _context.Users.FirstOrDefault(value => value.Email == model.Username);
             var hasedPassword = BCrypt.Net.BCrypt.Verify(model.Password, details.Password);
@@ -30,17 +30,20 @@ namespace CRUD_Operation.Controllers
             {
                 return Unauthorized();
             }
-           
+
             var tokenKey = Encoding.UTF8.GetBytes("thisismysecretkeycreatedbyvijay-45234-5435-234-5345-3245-23452345-345-23453245");
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[]
                 {
-            new Claim(ClaimTypes.Name, user.Name),
-            // Add more claims if needed
+                    new Claim(ClaimTypes.Name, user.Name),
+                    new Claim(ClaimTypes.Role, user.IsAdmin ? "admin" : "user"),
+                   
+                    // Add more claims if needed
             }),
-                Expires = DateTime.Now.AddMinutes(1), // Change the expiration time as needed
+                
+                Expires = DateTime.Now.AddMinutes(5),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256)
             };
 
