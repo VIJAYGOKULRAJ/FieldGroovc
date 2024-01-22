@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CRUD-Operation\CRUD-Operation.csproj" />
     <ProjectReference Include="..\CRUD.Domain\CRUD.Domain.csproj" />
     <ProjectReference Include="..\CRUD.Repository\CRUD.Data.MySQL.csproj" />
     <ProjectReference Include="..\CRUD.Services\CRUD.Services.csproj" />
