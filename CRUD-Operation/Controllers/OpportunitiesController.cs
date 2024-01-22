@@ -1,9 +1,11 @@
 ﻿using CRUD.Domain.Models;
 using CRUD.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CRUD_Operation.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class OpportunitiesController : ControllerBase
