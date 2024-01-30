@@ -1,4 +1,3 @@
-using AspNetCoreHero.ToastNotification.Abstractions;
 using CRUD.Data.MySQL.Data;
 using CRUD.Domain.Models;
 using CRUD.Services.Interfaces;
@@ -58,6 +57,8 @@ builder.Services.AddScoped<IInvoiceRepository, InvoiceRepository>();
 builder.Services.AddControllers();
 var key = "thisismysecretkeycreatedbyvijay-45234-5435-234-5345-3245-23452345-345-23453245";
 
+builder.Services.AddCors();
+
 builder.Services.AddAuthentication(x =>
 {
     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -88,6 +89,15 @@ if (!app.Environment.IsDevelopment())
 }
 builder.Logging.AddConsole();
 
+
+app.UseCors("AllowAll");
+//Addding cors
+app.UseCors(options =>
+{
+    options.AllowAnyOrigin();  // You can customize this to specific origins in production
+    options.AllowAnyMethod();
+    options.AllowAnyHeader();
+});
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

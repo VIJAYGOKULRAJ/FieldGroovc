@@ -21,7 +21,7 @@ namespace CRUD_Operation.Controllers
 
         [HttpPost("Authenticate")]
         public IActionResult Authenticate(Login model)
-        {
+            {
             var details = _context.Users.FirstOrDefault(value => value.Email == model.Username);
             var hasedPassword = BCrypt.Net.BCrypt.Verify(model.Password, details.Password);
             var user = _context.Users.FirstOrDefault(value => value.Email == model.Username && hasedPassword);
@@ -40,7 +40,6 @@ namespace CRUD_Operation.Controllers
                     new Claim(ClaimTypes.Name, user.Name),
                     new Claim(ClaimTypes.Role, user.IsAdmin ? "admin" : "user"),
                    
-                    // Add more claims if needed
             }),
                 
                 Expires = DateTime.Now.AddMinutes(5),
@@ -51,7 +50,7 @@ namespace CRUD_Operation.Controllers
             var finalToken = tokenHandler.CreateToken(tokenDescriptor);
             var serializedToken = tokenHandler.WriteToken(finalToken);
 
-            return Ok(serializedToken);
+            return Ok(new { Token = serializedToken });
 
         }
     }
