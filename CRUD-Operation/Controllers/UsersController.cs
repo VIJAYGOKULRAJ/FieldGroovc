@@ -56,7 +56,7 @@ namespace CRUD_Operation.Controllers
 
       
 
-
+            
         [HttpGet("activate")]
         public async Task<IActionResult> ActivateAccount([FromQuery] string email)
         {
