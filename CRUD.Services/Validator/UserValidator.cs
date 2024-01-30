@@ -33,14 +33,14 @@ namespace CRUD.Services.Validator
                 .Matches(@"^\d{10}$").WithMessage("Invalid phone number format");
 
             // Additional rules for other properties
-
+/*
             RuleFor(user => user.CreatedBy)
                 .NotEmpty().WithMessage("CreatedBy is required")
-                .MaximumLength(50).WithMessage("CreatedBy cannot exceed 50 characters");
+                .MaximumLength(50).WithMessage("CreatedBy cannot exceed 50 characters");*/
 
-            RuleFor(user => user.UpdatedBy)
+           /* RuleFor(user => user.UpdatedBy)
                 .NotEmpty().WithMessage("UpdatedBy is required")
-                .MaximumLength(50).WithMessage("UpdatedBy cannot exceed 50 characters");
+                .MaximumLength(50).WithMessage("UpdatedBy cannot exceed 50 characters");*/
 
             RuleFor(user => user.CreatedDate)
                 .NotEmpty().WithMessage("CreatedDate is required");

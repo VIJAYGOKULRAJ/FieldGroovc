@@ -35,6 +35,7 @@ namespace CRUD.Services.Services
                
                 throw new ValidationException($"Validation failed: {string.Join(", ", errors)}");
             }
+          
             model.IsActive = false;
             model.Password = BCrypt.Net.BCrypt.HashPassword(model.Password);
             await _context.Users.AddAsync(model);
