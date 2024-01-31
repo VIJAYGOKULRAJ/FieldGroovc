@@ -2,9 +2,11 @@
 using CRUD.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CRUD_Operation.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class WorkOrdersController : ControllerBase
@@ -13,17 +15,15 @@ namespace CRUD_Operation.Controllers
         public WorkOrdersController(IWorkOrdersRepository workOrdersRepository)
         {
             _workOrdersRepository = workOrdersRepository;
-
         }
+
         //Create a new Workorder
         [HttpPost]
         public IActionResult CreateWorkOrders(WorkOrders model)
         {
             if (ModelState.IsValid)
             {
-
                 var result = _workOrdersRepository.WorkOrdersAdd(model);
-
                 return Ok(result);
             }
             return BadRequest();
@@ -35,13 +35,10 @@ namespace CRUD_Operation.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 var result = _workOrdersRepository.EditWordOrders(id,updatedModel);
-
                 return Ok(result);
             }
             return BadRequest();
         }
-
     }
 }

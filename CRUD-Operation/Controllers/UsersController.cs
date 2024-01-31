@@ -5,6 +5,7 @@ using Humanizer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CRUD_Operation.Controllers
 {
@@ -21,6 +22,7 @@ namespace CRUD_Operation.Controllers
             _emailSender = emailSender;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IEnumerable<Users>> GetallUsers()
         {
@@ -43,6 +45,8 @@ namespace CRUD_Operation.Controllers
             return BadRequest();
 
         }
+
+        [Authorize]
         [HttpGet("{id}")]
         public IActionResult GetById(int id) 
         {
