@@ -52,6 +52,6 @@ namespace CRUD_Operation.Controllers
 
             return Ok(new { Token = serializedToken });
 
-        }
+            }
     }
 }
