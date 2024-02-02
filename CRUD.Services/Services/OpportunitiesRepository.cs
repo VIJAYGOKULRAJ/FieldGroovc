@@ -45,30 +45,14 @@ namespace CRUD.Services.Services
             }
         }
 
-        public async Task<IEnumerable<Leads>> GetAll()
+        public async Task AddOpportunities(Opportunities model)
         {
-            return await _context.Leads
-                .Where(lead => lead.IsOpportunity)
-                .ToListAsync();
-        }
-
-
-        public async Task OpportunitiesAdd(Leads model)
-        {
-
-            var validationResult = await _validator.ValidateAsync(model);
-
-            if (!validationResult.IsValid)
-            {
-
-                var errors = validationResult.Errors.Select(error => error.ErrorMessage);
-
-                throw new ValidationException($"Validation failed: {string.Join(", ", errors)}");
-            }
-            model.IsOpportunity = true;
-            await _context.Leads.AddAsync(model);
+            await _context.Opportunities.AddAsync(model);
             Save();
         }
+
+
+     
 
 
         public Leads DuplicateOpportunity(int id)
@@ -108,6 +92,11 @@ namespace CRUD.Services.Services
                 Console.WriteLine($"Error duplicating opportunity: {ex.Message}");
                 return null;
             }
+        }
+
+        public async Task<IEnumerable<Opportunities>> GetAll()
+        {
+            return await _context.Opportunities.ToListAsync();
         }
     }
 }

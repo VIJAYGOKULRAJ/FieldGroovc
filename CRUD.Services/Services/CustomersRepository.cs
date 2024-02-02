@@ -22,7 +22,9 @@ namespace CRUD.Services.Services
         }
         public async Task CustomersAdd(Customers model)
         {
-            await _context.Customers.AddAsync(model);
+             await _context.Customers.AddAsync(model);
+               await Save();
+
         }
     }
 }
