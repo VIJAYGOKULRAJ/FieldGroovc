@@ -53,7 +53,10 @@ builder.Services.AddScoped<IVendorServices, VendorServices>();
 builder.Services.AddScoped<IInventoryItemRepository, InventoryItemRepository>();
 
 builder.Services.AddScoped<IInvoiceRepository, InvoiceRepository>();
+
 builder.Services.AddScoped<IContactRepository, ContactRepository>();
+
+builder.Services.AddScoped<ICustomersRepository, CustomersRepository>();
 
 builder.Services.AddControllers();
 var key = "thisismysecretkeycreatedbyvijay-45234-5435-234-5345-3245-23452345-345-23453245";
