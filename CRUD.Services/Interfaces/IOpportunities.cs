@@ -10,8 +10,8 @@ namespace CRUD.Services.Interfaces
     public interface IOpportunities
     {
         Task ConvertToOpportunities(int id);
-        Task<IEnumerable<Leads>> GetAll();
-        Task OpportunitiesAdd(Leads model);
+        Task<IEnumerable<Opportunities>> GetAll();
+        Task AddOpportunities(Opportunities model);
         Leads DuplicateOpportunity(int id);
     }
 }

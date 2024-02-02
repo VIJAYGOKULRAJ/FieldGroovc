@@ -34,7 +34,7 @@ namespace CRUD_Operation.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Leads>> Get()
+        public async Task<IEnumerable<Opportunities>> Get()
         {
             return await _Opportunities.GetAll();
         }
@@ -42,12 +42,12 @@ namespace CRUD_Operation.Controllers
 
 
         [HttpPost]
-        public IActionResult CreateLeads(Leads model)
+        public IActionResult CreateLeads(Opportunities model)
         {
             if (ModelState.IsValid)
             {
 
-                _Opportunities.OpportunitiesAdd(model);
+                _Opportunities.AddOpportunities(model);
 
 
                 return Ok("Successfully Created....!");
