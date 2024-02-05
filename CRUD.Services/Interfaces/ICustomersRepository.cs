@@ -9,6 +9,6 @@ namespace CRUD.Services.Interfaces
 {
     public interface ICustomersRepository
     {
-        Task CustomersAdd(Customers model);
+        Task<string> CustomersAddAsync(Customers model);
     }
 }

@@ -16,15 +16,17 @@ namespace CRUD.Services.Services
         {
             _context = context;
         }
-        private async Task Save()
+        private async Task SaveAsync()
         {
             await _context.SaveChangesAsync();
         }
-        public async Task CustomersAdd(Customers model)
+        public async Task<string> CustomersAddAsync(Customers model)
         {
-             await _context.Customers.AddAsync(model);
-               await Save();
+            await _context.Customers.AddAsync(model);
+            await SaveAsync(); 
 
+            return "added success...";
         }
+
     }
 }
