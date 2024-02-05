@@ -15,13 +15,13 @@ namespace CRUD_Operation.Controllers
             _cutomersRepository = customersRepository;
         }
         [HttpPost]
-        public IActionResult CustomersAdd(Customers model)
+        public async Task<IActionResult> CustomersAdd(Customers model)
         {
+            var result = await _cutomersRepository.CustomersAddAsync(model);
+            Console.WriteLine(result);
 
-            _cutomersRepository.CustomersAdd(model);
-            return Ok("Customer Added....!");
-
-
+            // Assuming you want to return something meaningful, adjust accordingly
+            return Ok("Operation completed successfully");
         }
         public IActionResult Index()
         {

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace CRUD_Operation.Controllers
 {
-    [Authorize]
+    /*[Authorize]*/
     [Route("api/[controller]")]
     [ApiController]
     public class OpportunitiesController : ControllerBase
@@ -14,8 +14,6 @@ namespace CRUD_Operation.Controllers
         public OpportunitiesController(IOpportunities Opportunities)
         {
             _Opportunities = Opportunities;
-            
-
         }
         [HttpPut("ConvertToOpportunities/{id}")]
         public async Task<IActionResult> Put(int id)
@@ -42,7 +40,7 @@ namespace CRUD_Operation.Controllers
 
 
         [HttpPost]
-        public IActionResult CreateLeads(Opportunities model)
+        public IActionResult CreateOpportunity(Opportunities model)
         {
             if (ModelState.IsValid)
             {

@@ -19,6 +19,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ProductContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("connection"), b =>
         b.MigrationsAssembly("CRUD.Data.MySQL")));
+builder.Services.AddDbContext<ProductContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("connection")), ServiceLifetime.Scoped);
+
 
 builder.Services.AddControllersWithViews()
         .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<RegisterValidator>());
