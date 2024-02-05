@@ -16,7 +16,8 @@ namespace CRUD.Domain.Models
 
         [ForeignKey("Customers")]
         public int CustomerId { get; set; }
-        public DateTime DateCreated { get; set; }
+        [Column(TypeName = "datetime2")]
+        public DateTime DateCreated { get; set; } = DateTime.Now;
         public string? CreatedBy { get; set; }
         public string? CompanyName { get; set; }
         public string? FirstName { get; set; }
@@ -30,7 +31,8 @@ namespace CRUD.Domain.Models
         public string? Email { get; set; }
         public bool IsCustomer { get; set; }
         public bool IsExpired { get; set; }
-        public DateTime? BidExpirationDate { get; set; }
+        [Column(TypeName = "datetime2")]
+        public DateTime BidExpirationDate { get; set; } = DateTime.Now;
         public string? Notes { get; set; }
 
         [ForeignKey("Users")]
@@ -42,7 +44,8 @@ namespace CRUD.Domain.Models
         public string? Website { get; set; }
         public int? ConfidenceLevel { get; set; }
         public int? ReminderFrequency { get; set; }
-        public DateTime LastReminded { get; set; }
+        [Column(TypeName = "datetime2")]
+        public DateTime LastReminded { get; set; } = DateTime.Now;
         public string? LeadSource { get; set; }
         public string? Type { get; set; }
         public string? Name { get; set; }
@@ -56,6 +59,7 @@ namespace CRUD.Domain.Models
         public string? BillingState { get; set; }
         public string? BillingZip { get; set; }
         public bool? Archived { get; set; }
+        [Column(TypeName = "datetime2")]
         public DateTime DateModified { get; set; } = DateTime.Now;
         public string? ModifiedBy { get; set; }
         public string? ReferralSource { get; set; }
@@ -66,8 +70,10 @@ namespace CRUD.Domain.Models
         public double? Latitude { get; set; }
         public int? LocationId { get; set; }
         public bool Converted { get; set; }
-        public DateTime ConvertedDate { get; set; }
-        public DateTime? BidDate { get; set; }
+        [Column(TypeName = "datetime2")]
+        public DateTime ConvertedDate { get; set; } = DateTime.Now;
+        [Column(TypeName = "datetime2")]
+        public DateTime BidDate { get; set; } = DateTime.Now;
         public string? BidTime { get; set; }
         public string? ProjectName { get; set; }
         public string? Terms { get; set; }

@@ -25,9 +25,9 @@ namespace CRUD.Services.Services
         {
             try
             {
-                 _context.SaveChangesAsync();
+                 _context.SaveChanges();
             }
-            catch (DbUpdateException ex)
+                catch (DbUpdateException ex)
             {
                 // Log the exception for further investigation
                 Console.WriteLine($"Database save failed: {ex.Message}");
