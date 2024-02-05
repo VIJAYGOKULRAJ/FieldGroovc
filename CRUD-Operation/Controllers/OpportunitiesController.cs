@@ -14,8 +14,6 @@ namespace CRUD_Operation.Controllers
         public OpportunitiesController(IOpportunities Opportunities)
         {
             _Opportunities = Opportunities;
-            
-
         }
         [HttpPut("ConvertToOpportunities/{id}")]
         public async Task<IActionResult> Put(int id)
