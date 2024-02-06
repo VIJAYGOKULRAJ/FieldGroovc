@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,8 @@ namespace CRUD.Domain.Models
     {
         [Key]
         public int CustomerId { get; set; }
+        [ForeignKey("Estimates")]
+        public int EstimateId { get; set; }
         public DateTime? DateCreated { get; set; }=DateTime.Now;
         public string CustomerType { get; set; }
         public string AccountType { get; set; }
@@ -72,5 +75,8 @@ namespace CRUD.Domain.Models
         public string QuickBookDesktopID { get; set; }
         public DateTime? QuickBooksDesktopSyncDate { get; set; }= DateTime.Now;
         public string AccountTypeId { get; set; }
+
+
+        public virtual Estimates? Estimate { get; set; }
     }
 }

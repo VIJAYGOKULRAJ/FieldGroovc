@@ -52,6 +52,7 @@ namespace CRUD.Services.Services
             Save();
         }
 
+
         public Leads DuplicateOpportunity(int id)
         {
             try
@@ -96,6 +97,11 @@ namespace CRUD.Services.Services
             return await _context.Opportunities.ToListAsync();
         }
 
+
+        public IEnumerable<Opportunities> GetOpportunities()
+        {
+            return _context.Opportunities.ToList();
+        }
 
     }
 }
