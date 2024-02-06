@@ -37,6 +37,11 @@ namespace CRUD_Operation.Controllers
             return await _Opportunities.GetAll();
         }
 
+        [HttpGet("opp")]
+        public IEnumerable<Opportunities> GetAll()
+        {
+            return _Opportunities.GetOpportunities();
+        }
 
 
         [HttpPost]
