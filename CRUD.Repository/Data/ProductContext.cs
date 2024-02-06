@@ -30,5 +30,7 @@ namespace CRUD.Data.MySQL.Data
                     options => options.EnableRetryOnFailure());
             }
         }
+    
+
     }
 }
