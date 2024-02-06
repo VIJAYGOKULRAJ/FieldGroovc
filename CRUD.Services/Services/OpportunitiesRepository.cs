@@ -50,7 +50,7 @@ namespace CRUD.Services.Services
             Save();
         }
 
-
+       
      
 
 
@@ -96,6 +96,11 @@ namespace CRUD.Services.Services
         public async Task<IEnumerable<Opportunities>> GetAll()
         {
             return await _context.Opportunities.ToListAsync();
+        }
+
+        public IEnumerable<Opportunities> GetOpportunities()
+        {
+            return _context.Opportunities.ToList();
         }
     }
 }
