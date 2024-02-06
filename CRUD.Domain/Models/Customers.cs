@@ -76,7 +76,7 @@ namespace CRUD.Domain.Models
         public DateTime? QuickBooksDesktopSyncDate { get; set; }= DateTime.Now;
         public string AccountTypeId { get; set; }
 
-       
-        public virtual Estimates Estimate { get; set; }
+
+        public virtual Estimates? Estimate { get; set; }
     }
 }
