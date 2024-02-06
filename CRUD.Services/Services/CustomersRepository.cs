@@ -1,6 +1,7 @@
 ﻿using CRUD.Data.MySQL.Data;
 using CRUD.Domain.Models;
 using CRUD.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,24 @@ namespace CRUD.Services.Services
 
             return "added success...";
         }
+
+        public async Task<IEnumerable<Customers>> GetAll()
+        {
+            try
+            {
+                var customersWithEstimates = await _context.Customers
+                    .Include(c => c.Estimate) 
+                    .ToListAsync();
+
+                return customersWithEstimates;
+            }
+            catch (Exception ex)
+            {
+              
+                throw;
+            }
+        }
+
 
     }
 }

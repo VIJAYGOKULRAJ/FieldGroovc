@@ -1,6 +1,8 @@
 ﻿using CRUD.Domain.Models;
 using CRUD.Services.Interfaces;
+using CRUD.Services.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CRUD_Operation.Controllers
 {
@@ -20,12 +22,26 @@ namespace CRUD_Operation.Controllers
             var result = await _cutomersRepository.CustomersAddAsync(model);
             Console.WriteLine(result);
 
-            // Assuming you want to return something meaningful, adjust accordingly
+            
             return Ok("Operation completed successfully");
         }
-        public IActionResult Index()
+        [HttpGet]
+        public async Task<IActionResult> Get()
         {
-            return View();
+            try
+            {
+                var customersWithEstimates = await _cutomersRepository.GetAll();
+
+               
+
+                return Ok(customersWithEstimates);
+            }
+            catch (Exception ex)
+            {
+               
+                return StatusCode(500, $"Internal Server Error: {ex.Message}");
+            }
         }
+
     }
 }
