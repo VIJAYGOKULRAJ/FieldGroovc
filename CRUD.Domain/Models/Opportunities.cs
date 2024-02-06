@@ -69,5 +69,6 @@ namespace CRUD.Domain.Models
         public string? BidTime { get; set; }
         public string? ProjectName { get; set; }
         public string? Terms { get; set; }
+
     }
 }

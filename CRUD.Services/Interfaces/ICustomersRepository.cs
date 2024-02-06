@@ -10,6 +10,7 @@ namespace CRUD.Services.Interfaces
     public interface ICustomersRepository
     {
         Task<string> CustomersAddAsync(Customers model);
+
         Task<IEnumerable<Customers>> GetAll();
         Task<Customers> GetById(int id);
     }

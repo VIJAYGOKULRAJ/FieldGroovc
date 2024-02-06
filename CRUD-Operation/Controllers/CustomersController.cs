@@ -117,6 +117,7 @@ namespace CRUD_Operation.Controllers
                 return StatusCode(500, $"Internal Server Error: {ex.Message}");
             }
         }
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -137,6 +138,7 @@ namespace CRUD_Operation.Controllers
                 // Log the exception for further investigation
                 return StatusCode(500, $"Internal Server Error: {ex.Message}");
             }
+
         }
 
     }
