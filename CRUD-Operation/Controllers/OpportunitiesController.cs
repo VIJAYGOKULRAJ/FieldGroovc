@@ -37,6 +37,8 @@ namespace CRUD_Operation.Controllers
             return await _Opportunities.GetAll();
         }
 
+        
+
 
 
         [HttpPost]

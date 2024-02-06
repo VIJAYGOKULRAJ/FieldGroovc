@@ -23,9 +23,10 @@ namespace CRUD_Operation.Controllers
             // Assuming you want to return something meaningful, adjust accordingly
             return Ok("Operation completed successfully");
         }
-        public IActionResult Index()
+        [HttpGet]
+        public async Task<IEnumerable<Customers>> GetCustomers()
         {
-            return View();
+            return await _cutomersRepository.GetAllCustomers();
         }
     }
 }

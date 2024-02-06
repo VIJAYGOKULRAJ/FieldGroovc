@@ -78,5 +78,6 @@ namespace CRUD.Domain.Models
         public string? ProjectName { get; set; }
         public string? Terms { get; set; }
 
+
     }
 }

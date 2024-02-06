@@ -46,13 +46,11 @@ namespace CRUD.Services.Services
 
         public async Task AddOpportunities(Opportunities model)
         {
+           
+            
             await _context.Opportunities.AddAsync(model);
             Save();
         }
-
-
-     
-
 
         public Leads DuplicateOpportunity(int id)
         {
@@ -97,5 +95,7 @@ namespace CRUD.Services.Services
         {
             return await _context.Opportunities.ToListAsync();
         }
+
+
     }
 }
