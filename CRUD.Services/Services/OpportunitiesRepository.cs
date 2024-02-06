@@ -13,7 +13,6 @@ namespace CRUD.Services.Services
 {
     public class OpportunitiesRepository : IOpportunities
     {
-
         private readonly ProductContext _context;
         private readonly IValidator<Leads> _validator;
         public OpportunitiesRepository(ProductContext context, IValidator<Leads> validator)

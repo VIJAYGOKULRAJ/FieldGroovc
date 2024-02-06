@@ -26,7 +26,7 @@ namespace CRUD.Data.MySQL.Data
             {
                 // UseSqlServer with EnableRetryOnFailure
                 optionsBuilder.UseSqlServer(
-                    "server=localhost\\SQLEXPRESS;database=FieldGroove;integrated security=true;trustservercertificate=true;",
+                    "server=KAVIN_KUMAR_S\\SQLEXPRESS;database=FieldGroovc;integrated security=true;trustservercertificate=true;",
                     options => options.EnableRetryOnFailure());
             }
         }
