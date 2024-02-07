@@ -70,5 +70,7 @@ namespace CRUD.Domain.Models
         public string? ProjectName { get; set; }
         public string? Terms { get; set; }
 
+        public virtual Customers? customer { get; set; }
+
     }
 }

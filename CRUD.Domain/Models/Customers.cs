@@ -78,5 +78,6 @@ namespace CRUD.Domain.Models
 
 
         public virtual Estimates? Estimate { get; set; }
+
     }
 }
