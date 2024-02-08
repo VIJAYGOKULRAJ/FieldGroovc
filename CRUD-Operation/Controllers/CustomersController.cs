@@ -141,5 +141,35 @@ namespace CRUD_Operation.Controllers
 
         }
 
+        [HttpGet("GetCustomerId")]
+        public async Task<IActionResult> GetCustomerId([FromQuery] string name)
+        {
+            try
+            {
+                // Ensure that the provided 'name' parameter is not null or empty
+                if (string.IsNullOrEmpty(name))
+                {
+                    return BadRequest("CustomerName cannot be null or empty.");
+                }
+
+                // Call your repository or service method to get the CustomerId based on the CustomerName
+                var customerId = await _cutomersRepository.GetCustomerIdByName(name);
+
+                if (customerId == null)
+                {
+                    // Return a 404 Not Found response if the CustomerId is not found
+                    return NotFound("Customer not found.");
+                }
+
+                return Ok(new { CustomerId = customerId });
+            }
+            catch (Exception ex)
+            {
+                // Log the exception for further investigation
+                return StatusCode(500, $"Internal Server Error: {ex.Message}");
+            }
+        }
+
+
     }
 }

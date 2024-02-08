@@ -13,5 +13,7 @@ namespace CRUD.Services.Interfaces
 
         Task<IEnumerable<Customers>> GetAll();
         Task<Customers> GetById(int id);
+
+        Task<int> GetCustomerIdByName(string name);
     }
 }

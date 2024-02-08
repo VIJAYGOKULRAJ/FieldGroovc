@@ -65,7 +65,22 @@ namespace CRUD.Services.Services
             }
         }
 
+        public async Task<int> GetCustomerIdByName(string name)
+        {
+            try
+            {
+                var customerId = await _context.Customers
+                    .Where(c => c.CompanyName == name) 
+                    .Select(c => (int)c.CustomerId) 
+                    .FirstOrDefaultAsync();
 
-
+                return customerId;
+            }
+            catch (Exception ex)
+            {
+                // Log the exception for further investigation
+                throw;
+            }
+        }
     }
 }
