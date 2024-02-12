@@ -40,10 +40,15 @@ namespace CRUD_Operation.Controllers
 
         [HttpGet("opp")]
         public IEnumerable<Opportunities> GetAll()
-        {
+                {
             return _Opportunities.GetOpportunities();
         }
-
+        [HttpGet("filtered")]
+        public IEnumerable<Opportunities> GetFilteredData([FromQuery] string action, [FromQuery] string status)
+        {
+            var filteredData = _Opportunities.FilterOpportunities(action, status);
+            return filteredData;
+        }
 
 
         [HttpPost]
