@@ -97,6 +97,12 @@ namespace CRUD.Services.Services
             return await _context.Opportunities.ToListAsync();
         }
 
+        public IEnumerable<Opportunities> FilterOpportunities(string action, string status)
+        {
+            return _context.Opportunities
+                .Where(opportunity => opportunity.Action == action && opportunity.Status == status)
+                .ToList();
+        }
 
         public IEnumerable<Opportunities> GetOpportunities()
         {
