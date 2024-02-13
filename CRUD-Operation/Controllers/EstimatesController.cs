@@ -1,5 +1,6 @@
 ﻿using CRUD.Domain.Models;
 using CRUD.Services.Interfaces;
+using CRUD.Services.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +25,12 @@ namespace CRUD_Operation.Controllers
             model.ChangeOrder = false;
             var result = _estimatesRepository.EstimatesAdd(model);
             return Ok(result);
+        }
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            var estimate = _estimatesRepository.GetById(id);
+            return Ok(estimate);
         }
 
         //Locked the estimate
