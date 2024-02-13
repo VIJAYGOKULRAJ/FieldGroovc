@@ -25,7 +25,7 @@ namespace CRUD.Domain.Models
 
         [ForeignKey("Leads")]
         public int LeadsId { get; set; }
-        public DateTime? DateCreated { get; set; } = DateTime.Now;
+        public DateTime? DateCreated { get; set; } = DateTime.Now.Date;
         public string? Name { get; set; }
         public string? LineItemIds { get; set; }
         public bool? CustomerAccepted { get; set; }

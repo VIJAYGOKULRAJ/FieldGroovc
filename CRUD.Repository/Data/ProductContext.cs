@@ -19,6 +19,7 @@ namespace CRUD.Data.MySQL.Data
         public DbSet<Contacts> Contacts { get; set; }
         public DbSet<Customers> Customers { get; set; }
         public DbSet<Opportunities> Opportunities { get; set; }
+        public DbSet<Project> Projects { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
