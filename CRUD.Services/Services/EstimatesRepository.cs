@@ -25,7 +25,12 @@ namespace CRUD.Services.Services
         {
            _context.SaveChanges();
         }
-        public string EstimatesAdd(Estimates model)
+        public Estimates GetById(int id)
+        {
+            return _context.Estimates.FirstOrDefault(x => x.EstimateId == id);
+        }
+
+        public async Task<int> EstimatesAdd(Estimates model)
         {
             try
             {
@@ -38,25 +43,29 @@ namespace CRUD.Services.Services
                     if (model.Status == EstimateStatus.ReadyForWorkOrder)
                     {
                         model.ReadyForWorkOrder = true;
-                        _context.Estimates.Add(model);
+                        await _context.Estimates.AddAsync(model);
                         Save();
-                        return "added successfully also Change the readyForWorkOrder True...!";
+                        return model.EstimateId;
+                        
                     }
                     else
                     {
-                        _context.Estimates.Add(model);
+                        await _context.Estimates.AddAsync(model);
                         Save();
-                        return "added successfully...!";
+                        return model.EstimateId;
+
+
                     }
                 }
                 else
                 {
-                    return "You can create estimate only for Opportunity";
+                    throw new InvalidOperationException("You can create an estimate only for Opportunity");
                 }
             }
             catch (Exception ex)
             {
-                return ex.Message;
+                Console.WriteLine(ex.Message);
+                throw;
             }
         }
 
