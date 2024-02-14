@@ -46,14 +46,12 @@ namespace CRUD.Services.Services
 
         public async Task AddOpportunities(Opportunities model)
         {
-
             var customer_details = _context.Customers.FirstOrDefault(x => x.CustomerId == model.CustomerId);
             if (customer_details != null)
             {
                 model.customer = customer_details;
             }
             await _context.Opportunities.AddAsync(model);
-
             Save();
         }
 
@@ -114,6 +112,5 @@ namespace CRUD.Services.Services
              opportunity_details = _context.Opportunities.ToList();
             return opportunity_details;
         }
-
     }
 }

@@ -15,10 +15,10 @@ namespace CRUD_Operation.Controllers
         {
             _Opportunities = Opportunities;
         }
+
         [HttpPut("ConvertToOpportunities/{id}")]
         public async Task<IActionResult> Put(int id)
         {
-
             try
             {
                 await _Opportunities.ConvertToOpportunities(id);
@@ -28,7 +28,6 @@ namespace CRUD_Operation.Controllers
             {
                 return NotFound(ex.Message);
             }
-
         }
 
         [HttpGet]
