@@ -21,6 +21,8 @@ namespace CRUD.Data.MySQL.Data
         public DbSet<Opportunities> Opportunities { get; set; }
         public DbSet<Project> Projects { get; set; }
 
+        public DbSet<Companies> companies { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -31,7 +33,5 @@ namespace CRUD.Data.MySQL.Data
                     options => options.EnableRetryOnFailure());
             }
         }
-    
-
     }
 }
