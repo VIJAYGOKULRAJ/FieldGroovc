@@ -123,7 +123,7 @@ namespace CRUD_Operation.Controllers
         {
             try
             {
-                var customerWithEstimate = await _cutomersRepository.GetById(id);
+                var customerWithEstimate = _cutomersRepository.GetById(id);
 
                 if (customerWithEstimate == null)
                 {
@@ -141,35 +141,43 @@ namespace CRUD_Operation.Controllers
 
         }
 
-        [HttpGet("GetCustomerId")]
-        public async Task<IActionResult> GetCustomerId([FromQuery] string name)
+
+        [HttpPut("{id}/AssignName")]
+        public async Task<IActionResult> PostAssignName(int id, [FromBody] AssignName name)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             try
             {
-                // Ensure that the provided 'name' parameter is not null or empty
-                if (string.IsNullOrEmpty(name))
-                {
-                    return BadRequest("CustomerName cannot be null or empty.");
-                }
-
-                // Call your repository or service method to get the CustomerId based on the CustomerName
-                var customerId = await _cutomersRepository.GetCustomerIdByName(name);
-
-                if (customerId == null)
-                {
-                    // Return a 404 Not Found response if the CustomerId is not found
-                    return NotFound("Customer not found.");
-                }
-
-                return Ok(new { CustomerId = customerId });
+                var changedAssignName = await _cutomersRepository._AssignName(id, name);
+                return Ok(changedAssignName);
             }
             catch (Exception ex)
             {
-                // Log the exception for further investigation
-                return StatusCode(500, $"Internal Server Error: {ex.Message}");
+                return BadRequest(ex.Message);
             }
         }
+        [HttpPut("{id}/assignsaleperson")]
+        public async Task<IActionResult> PostAssignSalePerson(int id, [FromBody] AssignSales name)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
+            try
+            {
+                var changedAssignName = await _cutomersRepository._AssignSales(id, name);
+                return Ok(changedAssignName);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+         }
 
     }
 }

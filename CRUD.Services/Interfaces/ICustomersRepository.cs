@@ -12,8 +12,11 @@ namespace CRUD.Services.Interfaces
         Task<string> CustomersAddAsync(Customers model);
 
         Task<IEnumerable<Customers>> GetAll();
-        Task<Customers> GetById(int id);
 
-        Task<int> GetCustomerIdByName(string name);
+       Customers GetById(int id);
+        Task<string> _AssignName(int id, AssignName name);
+        Task<string> _AssignSales(int id, AssignSales name);
+
+   
     }
 }
