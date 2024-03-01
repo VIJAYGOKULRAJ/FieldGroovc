@@ -79,4 +79,15 @@ namespace CRUD.Domain.Models
 
         public virtual Estimates? Estimate { get; set; }
     }
+
+
+    public class AssignName
+    {
+        public string FirstName { get; set; }
+    }
+
+    public class AssignSales
+    {
+        public string Salesman { get; set; }
+    }
 }

@@ -16,10 +16,12 @@ namespace CRUD.Services.Services
         private readonly ProductContext _context;
         private readonly ILeadsRepository _leadsRepository;
 
-        public EstimatesRepository(ProductContext context , ILeadsRepository leadsRepository)
+
+        public EstimatesRepository(ProductContext context , ILeadsRepository leadsRepository )
         {
             _context = context;
             _leadsRepository = leadsRepository;
+           
         }
         private void Save()
         {
@@ -229,6 +231,6 @@ namespace CRUD.Services.Services
             }
         }
 
-
+       
     }
 }

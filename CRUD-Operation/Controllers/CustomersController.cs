@@ -122,7 +122,7 @@ namespace CRUD_Operation.Controllers
         {
             try
             {
-                var customerWithEstimate = await _cutomersRepository.GetById(id);
+                var customerWithEstimate = _cutomersRepository.GetById(id);
 
                 if (customerWithEstimate == null)
                 {
@@ -139,5 +139,41 @@ namespace CRUD_Operation.Controllers
             }
         }
 
+        [HttpPut("{id}/AssignName")]
+        public async Task<IActionResult> PostAssignName(int id, [FromBody] AssignName name)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                var changedAssignName = await _cutomersRepository._AssignName(id, name);
+                return Ok(changedAssignName);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpPut("{id}/assignsaleperson")]
+        public async Task<IActionResult> PostAssignSalePerson(int id, [FromBody] AssignSales name)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                var changedAssignName = await _cutomersRepository._AssignSales(id, name);
+                return Ok(changedAssignName);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+         }
     }
 }

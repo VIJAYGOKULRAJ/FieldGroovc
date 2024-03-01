@@ -46,13 +46,13 @@ namespace CRUD.Services.Services
             }
         }
 
-        public async Task<Customers> GetById(int id)
+        public Customers GetById(int id)
         {
             try
             {
-                var customer = await _context.Customers
-                    .Include(c => c.Estimate) // Include related data if needed
-                    .FirstOrDefaultAsync(c => c.CustomerId == id);
+                var customer = _context.Customers
+                    .Include(c => c.Estimate) 
+                    .FirstOrDefault(c => c.CustomerId == id);
 
                 return customer;
             }
@@ -61,6 +61,35 @@ namespace CRUD.Services.Services
                 // Log the exception for further investigation
                 throw;
             }
+        }
+        public async Task<string> _AssignName(int id, AssignName name)
+        {
+            var customer =  _context.Customers
+                     .Include(c => c.Estimate)
+                     .FirstOrDefault(c => c.CustomerId == id);
+
+            if (customer != null)
+            {
+                 customer.FirstName = name.FirstName;
+                SaveAsync();
+                return "successfully assign name changed...";
+            }
+            return "error while assign name changed...";
+        }
+
+        public async Task<string> _AssignSales(int id, AssignSales name)
+        {
+            var customer = _context.Customers
+                    .Include(c => c.Estimate)
+                    .FirstOrDefault(c => c.CustomerId == id);
+
+            if (customer != null)
+            {
+                customer.Salesman = name.Salesman;
+                SaveAsync();
+                return "successfully assign saleperson changed...";
+            }
+            return "error while assign saleperson changed...";
         }
 
 
