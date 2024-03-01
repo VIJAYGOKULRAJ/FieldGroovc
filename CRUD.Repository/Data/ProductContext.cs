@@ -21,17 +21,17 @@ namespace CRUD.Data.MySQL.Data
         public DbSet<Opportunities> Opportunities { get; set; }
         public DbSet<Project> Projects { get; set; }
 
+        public DbSet<Companies> companies { get; set; }
+        public DbSet<CalendarEvents> CalendarEvents { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
                 // UseSqlServer with EnableRetryOnFailure
                 optionsBuilder.UseSqlServer(
-                    "server=localhost\\SQLEXPRESS;database=FieldGroove;integrated security=true;trustservercertificate=true;",
+                    "server=DESKTOP-S3MV8AB\\SQLEXPRESS;database=FieldGroovc;integrated security=true;trustservercertificate=true;",
                     options => options.EnableRetryOnFailure());
             }
         }
-    
-
     }
 }
