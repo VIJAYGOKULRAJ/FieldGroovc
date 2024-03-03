@@ -230,7 +230,27 @@ namespace CRUD.Services.Services
                 return null;
             }
         }
+        public string EditEstimateLocation(int id, string location)
+        {
+            try
+            {
+                var existingEstimate = _context.Estimates.FirstOrDefault(x => x.EstimateId == id);
 
-       
+                if (existingEstimate != null && existingEstimate.Locked == false)
+                {
+                    existingEstimate.LocationId = location;
+                    Save();
+                    return "Estimate Location Updated";
+                }
+                else
+                {
+                    return "Estimate not found or locked";
+                }
+            }
+            catch (Exception ex)
+            {
+                return $"An error occurred while updating estimate location: {ex.Message}";
+            }
+        }
     }
 }
