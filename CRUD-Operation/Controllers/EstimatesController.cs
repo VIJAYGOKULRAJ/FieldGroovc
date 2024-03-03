@@ -7,14 +7,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CRUD_Operation.Controllers
 {
-  
+
     [Route("api/[controller]")]
     [ApiController]
     public class EstimatesController : ControllerBase
     {
         private readonly IEstimatesRepository _estimatesRepository;
 
-        public EstimatesController(IEstimatesRepository estimatesRepository )
+        public EstimatesController(IEstimatesRepository estimatesRepository)
         {
             _estimatesRepository = estimatesRepository;
         }
@@ -67,7 +67,7 @@ namespace CRUD_Operation.Controllers
         }
 
         [HttpPost("addEstimateWithChangeOrder")]
-        public IActionResult AddEstimateWithChangeOrder (Estimates model)
+        public IActionResult AddEstimateWithChangeOrder(Estimates model)
         {
             try
             {
@@ -75,21 +75,21 @@ namespace CRUD_Operation.Controllers
                 var result = _estimatesRepository.EstimatesAdd(model);
                 return Ok(result);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
         }
 
         [HttpPut("{id}")]
-        public IActionResult EditEstimate(int id , [FromBody] Estimates model)
+        public IActionResult EditEstimate(int id, [FromBody] Estimates model)
         {
             try
             {
                 var result = _estimatesRepository.EditEstimate(id, model);
                 return Ok(result);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
             }
@@ -116,6 +116,23 @@ namespace CRUD_Operation.Controllers
                 return StatusCode(500, "An error occurred while duplicating the estimate.");
             }
         }
+
+
+        //Assigned office location
+        [HttpPut("editEstimateLocation/{id}")]
+        public IActionResult EditEstimateLocation(int id, [FromBody] string location)
+        {
+            try
+            {
+                var result = _estimatesRepository.EditEstimateLocation(id, location);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
 
     }
 }
