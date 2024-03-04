@@ -13,5 +13,7 @@ namespace CRUD.Services.Interfaces
         Task<IEnumerable<Opportunities>> GetAll();
         Task AddOpportunities(Opportunities model);
         Leads DuplicateOpportunity(int id);
+        IEnumerable<Opportunities> FilterOpportunities(string action, string status);
+        IEnumerable<Opportunities> GetOpportunities();
     }
 }

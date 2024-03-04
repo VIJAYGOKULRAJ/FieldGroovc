@@ -13,7 +13,6 @@ namespace CRUD.Services.Services
 {
     public class OpportunitiesRepository : IOpportunities
     {
-
         private readonly ProductContext _context;
         private readonly IValidator<Leads> _validator;
         public OpportunitiesRepository(ProductContext context, IValidator<Leads> validator)
@@ -47,13 +46,14 @@ namespace CRUD.Services.Services
 
         public async Task AddOpportunities(Opportunities model)
         {
+            var customer_details = _context.Customers.FirstOrDefault(x => x.CustomerId == model.CustomerId);
+            if (customer_details != null)
+            {
+                model.customer = customer_details;
+            }
             await _context.Opportunities.AddAsync(model);
             Save();
         }
-
-
-     
-
 
         public Leads DuplicateOpportunity(int id)
         {
@@ -97,6 +97,20 @@ namespace CRUD.Services.Services
         public async Task<IEnumerable<Opportunities>> GetAll()
         {
             return await _context.Opportunities.ToListAsync();
+        }
+
+        public IEnumerable<Opportunities> FilterOpportunities(string action, string status)
+        {
+            return _context.Opportunities
+                .Where(opportunity => opportunity.Action == action && opportunity.Status == status)
+                .ToList();
+        }
+
+        public IEnumerable<Opportunities> GetOpportunities()
+        {
+            IEnumerable<Opportunities> opportunity_details = new List<Opportunities>();
+             opportunity_details = _context.Opportunities.ToList();
+            return opportunity_details;
         }
     }
 }

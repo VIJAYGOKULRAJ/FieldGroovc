@@ -15,10 +15,10 @@ namespace CRUD_Operation.Controllers
         {
             _Opportunities = Opportunities;
         }
+
         [HttpPut("ConvertToOpportunities/{id}")]
         public async Task<IActionResult> Put(int id)
         {
-
             try
             {
                 await _Opportunities.ConvertToOpportunities(id);
@@ -28,7 +28,6 @@ namespace CRUD_Operation.Controllers
             {
                 return NotFound(ex.Message);
             }
-
         }
 
         [HttpGet]
@@ -37,6 +36,18 @@ namespace CRUD_Operation.Controllers
             return await _Opportunities.GetAll();
         }
 
+
+        [HttpGet("opp")]
+        public IEnumerable<Opportunities> GetAll()
+                {
+            return _Opportunities.GetOpportunities();
+        }
+        [HttpGet("filtered")]
+        public IEnumerable<Opportunities> GetFilteredData([FromQuery] string action, [FromQuery] string status)
+        {
+            var filteredData = _Opportunities.FilterOpportunities(action, status);
+            return filteredData;
+        }
 
 
         [HttpPost]
