@@ -17,6 +17,6 @@ namespace CRUD.Services.Interfaces
         Task<string> _AssignName(int id, AssignName name);
         Task<string> _AssignSales(int id, AssignSales name);
 
-   
-    }
+        Task<string> _AssignEstimate(int id, AssignSales name);
+
 }
