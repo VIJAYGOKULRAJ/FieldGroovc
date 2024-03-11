@@ -1,6 +1,7 @@
 ﻿using CRUD.Data.MySQL.Data;
 using CRUD.Domain.Models;
 using CRUD.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,6 +37,22 @@ namespace CRUD.Services.Services
         {
             await _context.ToDos.AddAsync(model);
             await Save();
+        }
+
+        public IEnumerable<TodoDetails> GetTodoDetails()
+        {
+            var todoDetails = _context.ToDos
+                .Include(t => t.User)
+                .Select(t => new TodoDetails
+                {
+                    Username = t.User.Username,
+                    DueDate = t.DueDate,
+                    Description = t.Description,
+                    ToDo = t.ToDo
+                })
+                .ToList();
+
+            return todoDetails;
         }
     }
 }
