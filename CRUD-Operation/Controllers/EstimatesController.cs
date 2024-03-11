@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CRUD_Operation.Controllers
 {
-
-    [Route("api/[controller]")]
+    
+    [Route("api/[controller]")] 
     [ApiController]
     public class EstimatesController : ControllerBase
     {
@@ -43,12 +43,11 @@ namespace CRUD_Operation.Controllers
                 return Ok(result);
             }
             catch (Exception ex)
-            {
+            { 
                 // Log the exception or handle it as needed
                 return StatusCode(500, "An error occurred while locking the estimate.");
             }
         }
-
 
         //Change the default estimate will be true
         [HttpPut("changeDefaultEstimate/{id}")]
@@ -94,13 +93,13 @@ namespace CRUD_Operation.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
         [HttpPost("duplicateEstimate/{id}")]
         public IActionResult DuplicateEstimate(int id)
         {
             try
             {
                 var duplicatedEstimate = _estimatesRepository.DuplicateEstimate(id);
-
                 if (duplicatedEstimate != null)
                 {
                     return Ok(duplicatedEstimate);
@@ -117,22 +116,23 @@ namespace CRUD_Operation.Controllers
             }
         }
 
-
         //Assigned office location
         [HttpPut("editEstimateLocation/{id}")]
-        public IActionResult EditEstimateLocation(int id, [FromBody] string location)
+        public IActionResult EditEstimateLocation(int id,[FromBody] EstimateLocation location)
         {
             try
             {
-                var result = _estimatesRepository.EditEstimateLocation(id, location);
-                return Ok(result);
+                if(location != null)
+                {
+                    var result = _estimatesRepository.EditEstimateLocation(id, location);
+                    return Ok(result);
+                }
+                return StatusCode(500, "Data not found");
             }
             catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
             }
         }
-
-
     }
 }

@@ -230,7 +230,8 @@ namespace CRUD.Services.Services
                 return null;
             }
         }
-        public string EditEstimateLocation(int id, string location)
+
+        public string EditEstimateLocation(int id, EstimateLocation location)
         {
             try
             {
@@ -238,7 +239,7 @@ namespace CRUD.Services.Services
 
                 if (existingEstimate != null && existingEstimate.Locked == false)
                 {
-                    existingEstimate.LocationId = location;
+                    existingEstimate.LocationId = location.Estimate_Location;
                     Save();
                     return "Estimate Location Updated";
                 }
