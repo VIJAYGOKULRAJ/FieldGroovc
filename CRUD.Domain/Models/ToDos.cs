@@ -19,8 +19,9 @@ namespace CRUD.Domain.Models
         public string? ToDo { get; set; } 
 
         public bool? Complete { get; set; }
-    
-        public string? UserId { get; set; }
+        [ForeignKey("User")]
+        public int? UserId { get; set; }
+        public User User { get; set; }
 
         public bool? SendEmailReminder { get; set; }
 

@@ -24,13 +24,14 @@ namespace CRUD.Data.MySQL.Data
         public DbSet<Companies> companies { get; set; }
         public DbSet<CalendarEvents> CalendarEvents { get; set; }
         public DbSet<ToDos> ToDos { get; set; }
+        public DbSet<User> User { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
                 // UseSqlServer with EnableRetryOnFailure
                 optionsBuilder.UseSqlServer(
-                   "Data Source=localhost\\SQLEXPRESS;Initial Catalog=FieldGroove;Integrated Security=True;Encrypt=True;Trust Server Certificate=True",
+                   "Data Source=DESKTOP-S3MV8AB\\SQLEXPRESS;Initial Catalog=FieldGroovc;Integrated Security=True;Encrypt=True;Trust Server Certificate=True",
                     options => options.EnableRetryOnFailure());
             }
         }
