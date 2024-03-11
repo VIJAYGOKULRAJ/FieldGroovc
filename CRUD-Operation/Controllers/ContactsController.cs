@@ -22,8 +22,6 @@ namespace CRUD_Operation.Controllers
             
                 _contactRepository.ContactsAdd(model);
                 return Ok("Conatct Added....!");
-            
-
         }
         public IActionResult Index()
         {

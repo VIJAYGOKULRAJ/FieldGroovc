@@ -23,6 +23,7 @@ namespace CRUD.Data.MySQL.Data
 
         public DbSet<Companies> companies { get; set; }
         public DbSet<CalendarEvents> CalendarEvents { get; set; }
+        public DbSet<ToDos> ToDos { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
