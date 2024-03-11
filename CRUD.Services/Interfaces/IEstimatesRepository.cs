@@ -19,7 +19,7 @@ namespace CRUD.Services.Interfaces
         
 
         Estimates DuplicateEstimate(int id);
-        string EditEstimateLocation(int id, string location);
+        string EditEstimateLocation(int id, EstimateLocation location);
 
 
 

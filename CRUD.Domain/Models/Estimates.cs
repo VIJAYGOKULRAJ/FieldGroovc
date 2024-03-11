@@ -64,4 +64,9 @@ namespace CRUD.Domain.Models
         public string? Token { get; set; }
     }
 
+    public class EstimateLocation
+   {
+       public string? Estimate_Location { get; set; }
+    }
+
 }
