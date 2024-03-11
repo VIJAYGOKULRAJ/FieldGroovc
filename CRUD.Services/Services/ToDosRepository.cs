@@ -9,34 +9,33 @@ using System.Threading.Tasks;
 
 namespace CRUD.Services.Services
 {
-    public class CalendarEventRepository : ICalendarEvent
+    public class ToDosRepository : IToDos
     {
         private readonly ProductContext _context;
-        public CalendarEventRepository(ProductContext context)
+        public ToDosRepository(ProductContext context)
         {
             _context = context;
         }
-
-        public IEnumerable<CalendarEvents> GetCalendarEvents()
+        private async Task Save()
+        {
+            await _context.SaveChangesAsync();
+        }
+        public IEnumerable<ToDos> GetToDos()
         {
             try
             {
-                return _context.CalendarEvents.ToList();
+                return _context.ToDos.ToList();
             }
             catch (Exception ex)
             {
                 throw;
             }
         }
-        private async Task Save()
+
+        public async Task ToDosAdd(ToDos model)
         {
-            await _context.SaveChangesAsync();
-        }
-        public async Task CalendarEventsAdd(CalendarEvents model)
-        {
-            await _context.CalendarEvents.AddAsync(model);
+            await _context.ToDos.AddAsync(model);
             await Save();
         }
-
     }
 }
