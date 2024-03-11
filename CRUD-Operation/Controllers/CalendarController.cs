@@ -27,10 +27,15 @@ namespace CRUD_Operation.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception
                 return StatusCode(500, "Internal Server Error");
             }
-        }   
-  
+        }
+        [HttpPost]
+        public IActionResult CalendarEventsAdd(CalendarEvents model)
+        {
+            _calendarEvent.CalendarEventsAdd(model);
+            return Ok("Event Added....!");
+        }
+
     }
 }

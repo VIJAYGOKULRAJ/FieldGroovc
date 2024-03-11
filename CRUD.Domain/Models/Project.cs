@@ -133,7 +133,7 @@ public class Project
 
     public string? Reason2 { get; set; }
 
-    public DateTime? LostDate { get; set; } = DateTime.Now;             
+    public DateTime? LostDate { get; set; } = DateTime.Now;
 
     public string? RetainageType { get; set; }
 

@@ -25,9 +25,17 @@ namespace CRUD.Services.Services
             }
             catch (Exception ex)
             {
-                // Log the exception
-                throw; // Re-throw the exception to propagate it up the call stack
+                throw;
             }
+        }
+        private async Task Save()
+        {
+            await _context.SaveChangesAsync();
+        }
+        public async Task CalendarEventsAdd(CalendarEvents model)
+        {
+            await _context.CalendarEvents.AddAsync(model);
+            await Save();
         }
 
     }

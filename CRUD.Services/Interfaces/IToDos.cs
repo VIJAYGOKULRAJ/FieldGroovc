@@ -1,4 +1,5 @@
 ﻿using CRUD.Domain.Models;
+using CRUD.Services.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,10 @@ using System.Threading.Tasks;
 
 namespace CRUD.Services.Interfaces
 {
-    public interface ICalendarEvent
+    public interface IToDos
     {
-       public IEnumerable<CalendarEvents> GetCalendarEvents();
-       Task CalendarEventsAdd(CalendarEvents model);
-
-
+        public IEnumerable<ToDos> GetToDos();
+        Task ToDosAdd(ToDos model);
+        IEnumerable<TodoDetails> GetTodoDetails();
     }
 }

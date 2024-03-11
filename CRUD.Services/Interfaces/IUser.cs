@@ -7,11 +7,9 @@ using System.Threading.Tasks;
 
 namespace CRUD.Services.Interfaces
 {
-    public interface ICalendarEvent
+    public interface IUser
     {
-       public IEnumerable<CalendarEvents> GetCalendarEvents();
-       Task CalendarEventsAdd(CalendarEvents model);
-
+        public IEnumerable<User> GetUser();
 
     }
 }

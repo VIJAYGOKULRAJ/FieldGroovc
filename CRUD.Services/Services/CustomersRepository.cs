@@ -111,5 +111,10 @@ namespace CRUD.Services.Services
                 throw;
             }
         }
+
+        public Task<string> _AssignEstimate(int id, AssignSales name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
