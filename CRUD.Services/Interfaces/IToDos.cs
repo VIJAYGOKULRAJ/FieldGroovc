@@ -13,5 +13,6 @@ namespace CRUD.Services.Interfaces
         public IEnumerable<ToDos> GetToDos();
         Task ToDosAdd(ToDos model);
         IEnumerable<TodoDetails> GetTodoDetails();
+        Task<bool> DeleteToDoById(int id);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using CRUD.Domain.Models;
 using CRUD.Services.Interfaces;
+using CRUD.Services.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CRUD_Operation.Controllers
@@ -39,7 +40,7 @@ namespace CRUD_Operation.Controllers
 
         [HttpGet("GetTodoDetails")]
         public IActionResult GetTodoDetails()
-        {
+                    {
             try
             {
                 var todoDetails = _todos.GetTodoDetails();
@@ -51,5 +52,38 @@ namespace CRUD_Operation.Controllers
                 return StatusCode(500, "Internal Server Error");
             }
         }
+
+        [HttpPost("TodoWithUser")]
+        public async Task<IActionResult> CreateTodoWithUser(TodoDetails request)
+        {
+            try
+            {
+                var user = _user.GetUserByUsername(request.Username);
+                if (user == null)
+                {
+                    return NotFound($"User with username {request.Username} not found.");
+                }
+
+                var newTodo = new ToDos
+                {
+                    UserId = user.Id, 
+                    ToDo = request.ToDo,
+                    Description = request.Description,
+                    DueDate = request.DueDate,
+                    SendEmailReminder=request.SendEmailReminder,
+                    ReminderFrequency=request.ReminderFrequency
+                };
+
+                await _todos.ToDosAdd(newTodo);
+
+                return Ok("ToDo added successfully.");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+
+
     }
 }

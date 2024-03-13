@@ -20,7 +20,7 @@ namespace CRUD.Domain.Models
 
         public bool? Complete { get; set; }
         [ForeignKey("User")]
-        public int? UserId { get; set; }
+        public int UserId { get; set; }
         public User User { get; set; }
 
         public bool? SendEmailReminder { get; set; }
