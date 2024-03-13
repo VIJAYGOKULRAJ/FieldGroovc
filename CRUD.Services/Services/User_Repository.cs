@@ -1,6 +1,7 @@
 ﻿using CRUD.Data.MySQL.Data;
 using CRUD.Domain.Models;
 using CRUD.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,13 +20,17 @@ namespace CRUD.Services.Services
         public IEnumerable<User> GetUser()
         {
             try
-            {
+                {
                 return _context.User.ToList();
             }
             catch (Exception ex)
             {
                 throw;
             }
+        }
+        public User GetUserByUsername(string username)
+        {
+            return _context.User.FirstOrDefault(u => u.Username == username);
         }
     }
 }

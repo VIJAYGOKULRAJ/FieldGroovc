@@ -10,6 +10,7 @@ namespace CRUD.Services.Interfaces
     public interface IUser
     {
         public IEnumerable<User> GetUser();
+        User GetUserByUsername(string username);
 
     }
 }

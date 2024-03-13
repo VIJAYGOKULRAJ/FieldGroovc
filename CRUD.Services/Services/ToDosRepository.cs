@@ -54,5 +54,19 @@ namespace CRUD.Services.Services
 
             return todoDetails;
         }
+        public async Task<bool> DeleteToDoById(int id)
+        {
+            var todoToDelete = await _context.ToDos.FindAsync(id);
+
+            if (todoToDelete == null)
+            {
+                return false; 
+            }
+
+            _context.ToDos.Remove(todoToDelete);
+            await Save();
+
+            return true;
+        }
     }
 }
