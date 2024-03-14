@@ -40,7 +40,7 @@ namespace CRUD_Operation.Controllers
 
         [HttpGet("GetTodoDetails")]
         public IActionResult GetTodoDetails()
-                    {
+        {
             try
             {
                 var todoDetails = _todos.GetTodoDetails();
@@ -83,6 +83,28 @@ namespace CRUD_Operation.Controllers
                 return StatusCode(500, "Internal Server Error");
             }
         }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteToDo(int id)
+        {
+            try
+            {
+                var isDeleted = await _todos.DeleteToDoById(id);
+
+                if (isDeleted)
+                {
+                    return Ok("ToDo deleted successfully.");
+                }
+                else
+                {
+                    return NotFound($"ToDo with ID {id} not found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+
 
 
     }

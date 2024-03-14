@@ -45,10 +45,13 @@ namespace CRUD.Services.Services
                 .Include(t => t.User)
                 .Select(t => new TodoDetails
                 {
+                    Id = t.Id, 
                     Username = t.User.Username,
                     DueDate = t.DueDate,
                     Description = t.Description,
-                    ToDo = t.ToDo
+                    ToDo = t.ToDo,
+                    SendEmailReminder = t.SendEmailReminder ?? false,
+                    ReminderFrequency = t.ReminderFrequency ?? 0
                 })
                 .ToList();
 
