@@ -10,6 +10,9 @@ namespace CRUD.Services.Interfaces
     public interface IUser
     {
         public IEnumerable<User> GetUser();
+        public IEnumerable<User> ListUser();
+        Task AddUser(User model);
+
         User GetUserByUsername(string username);
 
     }

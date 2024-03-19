@@ -28,9 +28,30 @@ namespace CRUD.Services.Services
                 throw;
             }
         }
+        public IEnumerable<User> ListUser()
+            {
+            try
+            {
+                return _context.User.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
         public User GetUserByUsername(string username)
         {
             return _context.User.FirstOrDefault(u => u.Username == username);
         }
+        private async Task Save()
+        {
+            await _context.SaveChangesAsync();
+        }
+        public async Task AddUser(User model)
+        {
+            await _context.User.AddAsync(model);
+            Save();
+        }
     }
 }
+    

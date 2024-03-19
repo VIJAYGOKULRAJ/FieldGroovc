@@ -28,6 +28,27 @@ namespace CRUD_Operation.Controllers
                 return StatusCode(500, "Internal Server Error");
             }
         }
+        [HttpGet("user")]
+        public IActionResult GetUser()
+        {
+            try
+            {
+                var events = _user.ListUser();
+
+                return Ok(events);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
+
+        [HttpPost]
+        public IActionResult AddUser(User model)
+        {
+            _user.AddUser(model);
+            return Ok("User Added....!");
+        }
 
     }
 }
