@@ -20,7 +20,6 @@ namespace CRUD.Data.MySQL.Data
         public DbSet<Customers> Customers { get; set; }
         public DbSet<Opportunities> Opportunities { get; set; }
         public DbSet<Project> Projects { get; set; }
-
         public DbSet<Companies> companies { get; set; }
         public DbSet<CalendarEvents> CalendarEvents { get; set; }
         public DbSet<ToDos> ToDos { get; set; }

@@ -50,7 +50,7 @@ namespace CRUD.Services.Services
         public async Task AddUser(User model)
         {
             await _context.User.AddAsync(model);
-            Save();
+            await Save();
         }
     }
 }

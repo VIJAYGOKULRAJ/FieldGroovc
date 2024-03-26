@@ -21,6 +21,18 @@ namespace CRUD.Services.Services
         {
             await _context.SaveChangesAsync();
         }
+
+        public IEnumerable<Customers> GetCustomer()
+         {
+            try
+            {
+                return _context.Customers.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
         public async Task<string> CustomersAddAsync(Customers model)
         {
           

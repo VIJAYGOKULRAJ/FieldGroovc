@@ -14,6 +14,7 @@ namespace CRUD_Operation.Controllers
         {
             _user = user;
         }
+
         [HttpGet]
         public IActionResult GetCalendarEvents()
         {
@@ -44,9 +45,9 @@ namespace CRUD_Operation.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddUser(User model)
+        public async Task<IActionResult> AddUser(User model)
         {
-            _user.AddUser(model);
+            await _user.AddUser(model);
             return Ok("User Added....!");
         }
 
