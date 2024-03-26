@@ -37,6 +37,7 @@ namespace CRUD_Operation.Controllers
         {
             try
             {
+
                 var customer = new Customers
                 {
                     DateCreated = model.DateCreated,
@@ -104,8 +105,9 @@ namespace CRUD_Operation.Controllers
                 };
 
                 var result = await _cutomersRepository.CustomersAddAsync(customer);
-                Console.WriteLine(result);
+                var result = await _cutomersRepository.CustomersAddAsync(model);
 
+                Console.WriteLine(result);
                 return Ok("Operation completed successfully");
             }
             catch (Exception ex)
@@ -114,21 +116,17 @@ namespace CRUD_Operation.Controllers
             }
         }
 
-
         [HttpGet]
         public async Task<IActionResult> Get()
         {
             try
             {
                 var customersWithEstimates = await _cutomersRepository.GetAll();
-
-               
-
                 return Ok(customersWithEstimates);
             }
             catch (Exception ex)
             {
-               
+
                 return StatusCode(500, $"Internal Server Error: {ex.Message}");
             }
         }
@@ -143,6 +141,7 @@ namespace CRUD_Operation.Controllers
                 if (customerWithEstimate == null)
                 {
                     // Return a 404 Not Found response if the customer is not found
+
                     return NotFound();
                 }
 
@@ -153,7 +152,6 @@ namespace CRUD_Operation.Controllers
                 // Log the exception for further investigation
                 return StatusCode(500, $"Internal Server Error: {ex.Message}");
             }
-
         }
 
 
@@ -192,7 +190,7 @@ namespace CRUD_Operation.Controllers
             {
                 return BadRequest(ex.Message);
             }
-         }
+        }
 
     }
 }
