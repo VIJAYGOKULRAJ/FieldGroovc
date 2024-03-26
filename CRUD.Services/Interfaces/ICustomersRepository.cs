@@ -19,5 +19,7 @@ namespace CRUD.Services.Interfaces
 
         Task<string> _AssignEstimate(int id, AssignSales name);
 
+        public IEnumerable<Customers> GetCustomer();
+
     }
 }

@@ -17,6 +17,21 @@ namespace CRUD_Operation.Controllers
             _cutomersRepository = customersRepository;
         }
 
+
+        [HttpGet("cust")]
+        public IActionResult GetCustomer()
+        {
+            try
+            {
+                var events = _cutomersRepository.GetCustomer();
+
+                return Ok(events);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal Server Error");
+            }
+        }
         [HttpPost]
         public async Task<IActionResult> CustomersAdd([FromBody] Customers model)
         {
@@ -85,7 +100,6 @@ namespace CRUD_Operation.Controllers
                     OptOutEstimateReminders = model.OptOutEstimateReminders,
                     QuickBookDesktopID = model.QuickBookDesktopID,
                     QuickBooksDesktopSyncDate = model.QuickBooksDesktopSyncDate,
-                    AccountTypeId = model.AccountTypeId
                     // Ensure to map all other properties
                 };
 
@@ -99,8 +113,9 @@ namespace CRUD_Operation.Controllers
                 return StatusCode(500, $"Internal Server Error: {ex.Message}");
             }
         }
-            [HttpGet]
 
+
+        [HttpGet]
         public async Task<IActionResult> Get()
         {
             try
